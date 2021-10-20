@@ -2,16 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Message } from './components/message'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Message
+      author = {"Anonim"}
+      text = {"Как пройти в библиотеку?"}    />
+      <Message
+      author = {"Vladimir"}
+      text = {"Это в 2 часа ночи?"}    />
+      <Message
+      author = {"Anonim"}
+      text = {'Да. Сегодня акция "Ночь в музее"'}    />
+      <Message
+      author = {"Vladimir"}
+      text = {"Тогда вам два квартала прямо и один налево."}    />
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

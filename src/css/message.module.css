@@ -1,0 +1,19 @@
+.messageBody{
+	width: 350px;
+	min-height: 70px;
+	background-color: silver;
+	border: solid 1px;
+	border-radius: 5%;
+}
+.author{
+	width: 97%;
+	display: flex;
+	justify-content: right;
+	padding-right: 3%;
+	margin: 2px 0 2px 0;
+
+}
+.text{
+	width: 96%;
+	padding: 2%;
+}
