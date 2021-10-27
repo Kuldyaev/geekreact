@@ -1,0 +1,12 @@
+.messageList{
+	width: 100%;
+	height: 88%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  background-color: #f0f0f0;
+}
+.messagesArea{
+   width: 98%;
+	height: 98%;
+}

@@ -1,0 +1,38 @@
+.sendingArea{
+	width: 100%;
+	height: 10%;
+	min-height: 75px;
+    border-top: 15px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/fon1.jpg');
+    background-repeat: repeat;
+}
+.newMessageArea{
+	width: 100%;
+	flex-grow: 50;
+	display: flex;
+}
+.newMessageTextArea{
+	flex-grow: 1;
+	margin: 5px;
+}
+.buttonArea{
+	width: 100%;
+	flex-grow: 25;
+	display: flex;
+	justify-content: end;
+}
+.buttonSendMessage{
+	height: 25px;
+	margin-right: 10px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px grey;
+	cursor: pointer;
+}
+.buttonSendMessage:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px grey;
+}
