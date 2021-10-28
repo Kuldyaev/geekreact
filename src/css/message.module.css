@@ -3,6 +3,12 @@
 	display: flex;
 	margin-top: 4px;
 }
+.messagePlaceRight{
+	width: 100%;
+	display: flex;
+	margin-top: 4px;
+	justify-content: flex-end;
+}
 .messageBody{
 	max-width: 80%;
 	background-color: silver;
@@ -15,7 +21,14 @@
 	justify-content: right;
 	padding-right: 3%;
 	margin: 2px 0 2px 0;
+}
 
+.authorLeft{	
+	width: 97%;
+	display: flex;
+	justify-content: left;
+	padding-right: 3%;
+	margin: 2px 0 2px 0;
 }
 .text{
 	width: 96%;
