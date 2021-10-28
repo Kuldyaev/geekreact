@@ -13,12 +13,12 @@ export const Message = (props) => {
         </div>
   }else{
     return <div className={styles.messagePlace}>
-          <div className = {styles.messageBody}>
-            <h5 className = {styles.authorLeft}> {props.author}</h5>
-            <div className = {styles.text}>
-              <p>{props.text}</p>
+            <div className = {styles.messageBody}>
+              <h5 className = {styles.authorLeft}> {props.author}</h5>
+              <div className = {styles.text}>
+                <p>{props.text}</p>
+              </div>
             </div>
           </div>
-        </div>
   }
 }
