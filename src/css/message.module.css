@@ -1,9 +1,13 @@
+.messagePlace{
+	width: 100%;
+	display: flex;
+	margin-top: 4px;
+}
 .messageBody{
-	width: 350px;
-	min-height: 70px;
+	max-width: 80%;
 	background-color: silver;
 	border: solid 1px;
-	border-radius: 5%;
+	border-radius: 5px;
 }
 .author{
 	width: 97%;
@@ -16,4 +20,7 @@
 .text{
 	width: 96%;
 	padding: 2%;
+}
+p{
+	margin: 0;
 }
