@@ -5,7 +5,8 @@ export const SendForm = (props) => {
 
   const [newmessage, changeNewMessage] = useState('');
 
-  const sendMessage = () => {
+  const sendMessage = (event) => {
+    event.preventDefault();
     if(newmessage.length>0){ props.addMessage(newmessage); }
     changeNewMessage('');
     document.getElementById('newmessage').value = '';
@@ -15,12 +16,12 @@ export const SendForm = (props) => {
     changeNewMessage(event.target.value);
   }
 
-  return <form action ='#'  className = {styles.sendingArea}>
+  return <form onSubmit ={sendMessage}  className = {styles.sendingArea}>
             <div className={styles.newMessageArea}> 
-              <input type="text" className={styles.newMessageTextArea} onChange={handleChange} id="newmessage"></input>
+              <input type="text" className={styles.newMessageTextArea} onChange={handleChange} id="newmessage" autoFocus ref={input => input && input.focus()}/> 
             </div>
             <div className={styles.buttonArea}>
-              <input type="submit" className={styles.buttonSendMessage} value="ОТПРАВИТЬ" onClick={sendMessage}></input>
+              <input type="submit" className={styles.buttonSendMessage} value="ОТПРАВИТЬ" />
             </div>
           </form>
 }
