@@ -41,9 +41,13 @@ function App() {
     if(messages.length===0){}
       else{
         if(messages[messages.length - 1].author !== "ChatBot"){
-          setTimeout(()=>{changeMessagesList([...messages, {id:messages[messages.length - 1].id+1, author:"ChatBot", text: "Really? Very interesting!"}])}, 2000);
+          const timerId = setTimeout(()=>{changeMessagesList([...messages, {id:messages[messages.length - 1].id+1, author:"ChatBot", text: "Really? Very interesting!"}])}, 2000);
+
+          return () => {clearTimeout(timerId)}
+
         }
-      }
+      };
+      
     },[messages])
  
   return (
@@ -70,7 +74,7 @@ function App() {
               backgroundColor: '#f0f0f0',
             }}
           >Contacts</Box>
-          <ChatsList list={messages}/>
+          <ChatsList list={chats}/>
         </Box>
         <Box
           sx={{
