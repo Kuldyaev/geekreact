@@ -11,24 +11,27 @@ function App() {
 
     ]);
 
-    const [chats, changeChatsList] = useState([
-      {
-        id: 1,
-        contact: "ChatBot"
-      },
-      {
-        id: 2,
-        contact: "Vasiliy"
-      },
-      {
-        id: 3,
-        contact: "Alisa"
-      },
-      {
-        id: 4,
-        contact: "Siri"
-      }
-
+  const [allchats, changeAllChats] = useState([
+    {
+      name: 'ChatBot',
+      id: 1,
+      messages:[]
+    },
+    {
+      name: "Vasiliy",
+      id: 2,
+      messages:[]
+    },
+    {
+      name: "Alisa",
+      id: 3,
+      messages:[]
+    },
+    {
+      name: "Siri",
+      id: 4,
+      messages:[]
+    }
     ]);
 
   const addNewMessage = (mess) => {
@@ -74,7 +77,7 @@ function App() {
               backgroundColor: '#f0f0f0',
             }}
           >Contacts</Box>
-          <ChatsList list={chats}/>
+          <ChatsList list={allchats}/>
         </Box>
         <Box
           sx={{

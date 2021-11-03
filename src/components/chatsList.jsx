@@ -7,7 +7,7 @@ export const ChatsList = (props) => {
   return <div className = {styles.chatList}>
              { props.list.map((message)=>(
                 <ChatName
-                      contact = {message.contact}
+                      contact = {message.name}
                       id= {message.id}
                       key= {message.id} />
               ))}
