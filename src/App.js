@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
-import { ChatHeader } from './components/chatheader'
-import { MessageList } from './components/messageList'
-import { ChatsList } from './components/chatsList'
-import { SendForm } from './components/sendForm'
-import Box from '@material-ui/core/Box';
+import { Chats } from './components/chats'
+import { Chat } from './components/chat'
+import { Register } from './components/register'
+import { Home } from './components/home'
+import { Profile } from './components/profile'
 
 function App() {
   const [messages, changeMessagesList] = useState([
@@ -54,43 +55,18 @@ function App() {
     },[messages])
  
   return (
-    <div className="App">
-      <Box 
-        sx={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-        }}
-      >
-        <Box
-          sx={{
-          width: '28%',
-          height: '100%',
-          border: '1px solid grey',
-        }}
-        >
-          <Box
-            sx={{
-              width: '100%',
-              height: '5%',
-              border: '1px solid grey',
-              backgroundColor: '#f0f0f0',
-            }}
-          >Contacts</Box>
-          <ChatsList list={allchats}/>
-        </Box>
-        <Box
-          sx={{
-            width: '70%',
-            height: '100%',
-          }}
-        >
-          <ChatHeader/>
-          <MessageList list={messages} /> 
-          <SendForm addMessage={addNewMessage}/>
-        </Box>
-      </Box>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path='/allchats' component={Chats}/>
+          <Route exact path="/profile" component={Profile}/>
+          <Route exact path='/register' component={Register}/>
+          <Route exact path='/chat/:id' component={Chat} />   
+          <Redirect  to="/" />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

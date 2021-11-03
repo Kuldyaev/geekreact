@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../css/chatlist.module.css'
 import { ChatName } from '../components/chatname'
 
