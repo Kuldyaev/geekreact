@@ -59,7 +59,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path='/allchats' component={Chats}/>
+          <Route exact path='/allchats' render={(props) => (<Chats {...props} list={allchats} />)} />
           <Route exact path="/profile" component={Profile}/>
           <Route exact path='/register' component={Register}/>
           <Route exact path='/chat/:id' component={Chat} />   
