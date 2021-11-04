@@ -55,14 +55,14 @@ function App() {
     },[messages])
  
   return (
-    <BrowserRouter>
+    <BrowserRouter>s
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path='/allchats' render={(props) => (<Chats {...props} list={allchats} />)} />
           <Route exact path="/profile" component={Profile}/>
           <Route exact path='/register' component={Register}/>
-          <Route exact path='/chat/:id' component={Chat} />   
+          <Route exact path='/chat/:id' render={(props) => (<Chat {...props} allchats={allchats} addNewMessage={addNewMessage} messages={messages}/>)} />   
           <Redirect  to="/" />
         </Switch>
       </div>

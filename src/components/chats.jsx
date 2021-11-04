@@ -3,8 +3,6 @@ import { ChatName } from '../components/chatname'
 import styles from '../css/chats.module.css'
 
 export const Chats = (props) => {
-  console.log(props);
-
   return <div className = {styles.profilepage}>
             <div className = {styles.profileHeader}>
               <Link to={'/'} className = {styles.homepageLink}>&#8592;HomePage</Link>
