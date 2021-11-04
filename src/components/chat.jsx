@@ -6,7 +6,9 @@ import { SendForm } from './sendForm'
 import Box from '@material-ui/core/Box';
 
 export const Chat = (props) => {
-  console.log(props);
+
+ const infoBase = props.allchats.filter(item => item.id === Number(props.match.params.id));
+ const info = infoBase[0];
 
   return <Box 
             sx={{
@@ -38,9 +40,9 @@ export const Chat = (props) => {
                 height: '100%',
               }}
             >
-              <ChatHeader/>
-              <MessageList list={props.messages} /> 
-              <SendForm addMessage={props.addNewMessage}/>
+              <ChatHeader id={info.id} name={info.name}/>
+              <MessageList list={info.messages} /> 
+              <SendForm addMessage={props.addNewMessage} id={info.id}/>
             </Box>
           </Box>
 }

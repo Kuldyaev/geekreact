@@ -8,10 +8,6 @@ import { Home } from './components/home'
 import { Profile } from './components/profile'
 
 function App() {
-  const [messages, changeMessagesList] = useState([
-
-    ]);
-
   const [allchats, changeAllChats] = useState([
     {
       name: 'ChatBot',
@@ -33,36 +29,61 @@ function App() {
       id: 4,
       messages:[]
     }
-    ]);
+  ]);
 
-  const addNewMessage = (mess) => {
+  const [contacts, changeContacts] = useState([
+    {
+      name: 'ChatBot',
+      id: 1,
+    },
+    {
+      name: "Vasiliy",
+      id: 2,
+    },
+    {
+      name: "Alisa",
+      id: 3,
+    },
+    {
+      name: "Siri",
+      id: 4,
+    }
+  ]);
+
+  const addNewMessage = (id, mess, author) => {
+    const newAllChats = allchats;
+    const currentEl = newAllChats[newAllChats.findIndex(item => item.id === Number(id))];
     let nextNumber = 0;
-    if(messages.length>0){nextNumber = messages[messages.length - 1].id+1 }  
-    changeMessagesList([...messages, {id:nextNumber, author:"Anonim", text: mess}])
+    if(currentEl.messages.length>0){nextNumber = currentEl.messages[currentEl.messages.length - 1].id+1 }  
+    newAllChats[newAllChats.findIndex(item => item.id === Number(id))].messages.push({id:nextNumber, author: author, text: mess});
+    console.log(newAllChats);
+    changeAllChats(newAllChats);
+    console.log(allchats);
   }
 
   useEffect(()=>{
-    if(messages.length===0){}
+    if(allchats[0].messages.length===0){}
       else{
-        if(messages[messages.length - 1].author !== "ChatBot"){
-          const timerId = setTimeout(()=>{changeMessagesList([...messages, {id:messages[messages.length - 1].id+1, author:"ChatBot", text: "Really? Very interesting!"}])}, 2000);
-
+        if(allchats[0].messages[allchats[0].messages.length - 1].author !== "ChatBot"){
+          const timerId = setTimeout(()=>{alert("Test")}, 2000);
           return () => {clearTimeout(timerId)}
-
         }
       };
-      
-    },[messages])
+  },[allchats])
+
+
+
+  
  
   return (
-    <BrowserRouter>s
+    <BrowserRouter>
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path='/allchats' render={(props) => (<Chats {...props} list={allchats} />)} />
+          <Route exact path='/allchats' render={(props) => (<Chats {...props} list={contacts} />)} />
           <Route exact path="/profile" component={Profile}/>
           <Route exact path='/register' component={Register}/>
-          <Route exact path='/chat/:id' render={(props) => (<Chat {...props} allchats={allchats} addNewMessage={addNewMessage} messages={messages}/>)} />   
+          <Route exact path='/chat/:id' render={(props) => (<Chat {...props} allchats={allchats} addNewMessage={addNewMessage}/>)} />   
           <Redirect  to="/" />
         </Switch>
       </div>
