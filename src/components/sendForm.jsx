@@ -6,7 +6,7 @@ export const SendForm = (props) => {
 
   const sendMessage = (event) => {
     event.preventDefault();
-    if(newmessage.length>0){props.addMessage(props.id, newmessage, "You")}
+    if(newmessage.length>0){props.addMessage(props.id, newmessage, false)}
     changeNewMessage('');
     document.getElementById('newmessage').value = '';
   }

@@ -7,8 +7,9 @@ import Box from '@material-ui/core/Box';
 
 export const Chat = (props) => {
 
- const infoBase = props.allchats.filter(item => item.id === Number(props.match.params.id));
+ const infoBase = props.contacts.filter(item => item.id === Number(props.match.params.id));
  const info = infoBase[0];
+ const chatmessages = props.messages.filter(message => message.contact === Number(props.match.params.id))
 
   return <Box 
             sx={{
@@ -32,7 +33,7 @@ export const Chat = (props) => {
                   backgroundColor: '#f0f0f0',
                 }}
               >Contacts</Box>
-              <ChatsList list={props.allchats}/>
+              <ChatsList list={props.contacts}/>
             </Box>
             <Box
               sx={{
@@ -41,7 +42,7 @@ export const Chat = (props) => {
               }}
             >
               <ChatHeader id={info.id} name={info.name}/>
-              <MessageList list={info.messages} /> 
+              <MessageList list={chatmessages} name={info.name}/> 
               <SendForm addMessage={props.addNewMessage} id={info.id}/>
             </Box>
           </Box>

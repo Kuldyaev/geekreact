@@ -6,13 +6,19 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 
 export const Chats = (props) => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => {setOpen(true)};
-    const handleClose = () => {setOpen(false)};
-    const createNewContact = () => {
-      console.log("NewContact");
-      handleClose();
-    }
+  const [open, setOpen] = useState(false);
+  const [newcontact, changeNewContact] = useState('');
+  const handleOpen = () => {setOpen(true)};
+  const handleClose = () => {setOpen(false)};
+  const createNewContact = () => {
+    if(newcontact.length>0){props.addNewContact(newcontact)}
+    changeNewContact('');
+    document.getElementById('newcontact').value = '';
+    handleClose();
+  }
+  const handleChange = (event) => {
+   changeNewContact(event.target.value);
+  }
 
 
   return <div className = {styles.profilepage}>
@@ -27,10 +33,10 @@ export const Chats = (props) => {
             <Modal open={open} onClose={handleClose}>
                 <div className={styles.modalWindow}>
                   <div className={styles.modalForm}>
-                    <h2>Укажите имя  Контакта</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim, non pharetra est ultrices et.
-                    </p>
+                    <h2 className={styles.modalTitle}>Укажите имя  Контакта</h2>
+                    <form className = {styles.inputForm}>
+                      <input type="text" className={styles.newContactTextArea} onChange={handleChange} id="newcontact" autoFocus ref={input => input && input.focus()}/> 
+                    </form>
                     <div className={styles.modalButtonArea}>
                       <Button onClick={createNewContact}>Создать</Button>
                       <Button onClick={handleClose}>Отмена</Button>

@@ -4,11 +4,15 @@ import { Message } from '../components/message'
 
 export const MessageList = (props) => {
 
+  console.log(props);
+
   return <div className = {styles.messageList}>
             <div className={styles.messagesArea}>
                 { props.list.map((message)=>(
                     <Message
-                      author = {message.author}
+                      name={props.name}
+                      answer = {message.answer}
+                      contact = {message.contact}
                       text = {message.text} 
                       key= {message.id} />
                   ))}
