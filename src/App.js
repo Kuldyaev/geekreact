@@ -46,7 +46,7 @@ function App() {
     if(messages.length===0){}
       else{
         if(messages[messages.length - 1].author !== "ChatBot"){
-          const timerId = setTimeout(()=>{alert("Test")}, 2000);
+          const timerId = setTimeout(()=>{console.log("Test")}, 2000);
           return () => {clearTimeout(timerId)}
         }
       };

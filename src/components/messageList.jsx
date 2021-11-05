@@ -4,8 +4,6 @@ import { Message } from '../components/message'
 
 export const MessageList = (props) => {
 
-  console.log(props);
-
   return <div className = {styles.messageList}>
             <div className={styles.messagesArea}>
                 { props.list.map((message)=>(
