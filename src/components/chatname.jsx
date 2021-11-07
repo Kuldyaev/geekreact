@@ -1,24 +1,13 @@
 import React from 'react';
-import styles from '../css/message.module.css'
+import styles from '../css/chatlist.module.css'
 
 export const ChatName = (props) => {
-  if(props.author==="ChatBot"){
-    return <div className={styles.messagePlaceRight}>
-          <div className = {styles.messageBody}>
-            <h5 className = {styles.author}> {props.author}</h5>
-            <div className = {styles.text}>
-              <p>{props.text}</p>
-            </div>
-          </div>
+
+  return <div className={styles.chatContact}>
+           <div className={styles.chatImage} style={{backgroundImage: "url('../img/" + props.id + ".jpg')"}}>
+           </div>
+           <div className={styles.contactName}>
+              {props.contact}
+            </div>   
         </div>
-  }else{
-    return <div className={styles.messagePlace}>
-            <div className = {styles.messageBody}>
-              <h5 className = {styles.authorLeft}> {props.author}</h5>
-              <div className = {styles.text}>
-                <p>{props.text}</p>
-              </div>
-            </div>
-          </div>
-  }
 }
