@@ -1,6 +1,5 @@
-import {CHECK_ON, CHECK_OFF} from '../constants'
+import {CHECK_ON} from '../constants'
 
-const changeCheckBoxOn = () => ({type: CHECK_ON})
-const changeCheckBoxOff = () => ({type: CHECK_OFF})
+const changeCheckBox = {type: CHECK_ON}
 
-export {changeCheckBoxOn, changeCheckBoxOff}
+export {changeCheckBox}

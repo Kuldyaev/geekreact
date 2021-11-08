@@ -1,11 +1,9 @@
-import {CHECK_ON, CHECK_OFF} from '../constants'
+import {CHECK_ON} from '../constants'
 
 const status = (state = {checkbox: false}, action) => {
   switch (action.type) {
     case CHECK_ON:
-      return {checkbox: true }
-    case CHECK_OFF:
-      return {checkbox: false }
+      return {checkbox: !state.checkbox }
     default:
       return state
   }

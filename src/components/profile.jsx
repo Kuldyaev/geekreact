@@ -1,13 +1,17 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styles from '../css/profile.module.css'
 import Checkbox from '@material-ui/core/Checkbox';
+import {changeCheckBox} from '../actions/status'
 
 export const Profile = (props) => {
 
   const checkbox = useSelector((state) => state.status);
+  const dispatch = useDispatch();
 
-  return <div className = {styles.profilepage}>
+  const checkCheckBox = () => {dispatch(changeCheckBox)};
+
+   return <div className = {styles.profilepage}>
             <div className = {styles.profileHeader}>
               <Link to={'/'} className = {styles.homepageLink}>&#8592;HomePage</Link>
               <div className = {styles.profileHeaderContent}>
@@ -22,7 +26,9 @@ export const Profile = (props) => {
                <div> Profile Description</div>
                <div>
                   <p>Checkbox for test</p>
-                  <Checkbox defaultChecked={checkbox.checkbox}/>
+                  <Checkbox onClick={checkCheckBox} checked={checkbox.checkbox}/>
+                  <p>data in store:</p>
+                  <p>{String(checkbox.checkbox)}</p>
                </div> 
             </div>
          </div>
