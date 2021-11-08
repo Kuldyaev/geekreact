@@ -1,93 +1,74 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
-import { ChatHeader } from './components/chatheader'
-import { MessageList } from './components/messageList'
-import { ChatsList } from './components/chatsList'
-import { SendForm } from './components/sendForm'
-import Box from '@material-ui/core/Box';
+import { Chats } from './components/chats'
+import { Chat } from './components/chat'
+import { Register } from './components/register'
+import { Home } from './components/home'
+import { Profile } from './components/profile'
 
 function App() {
-  const [messages, changeMessagesList] = useState([
+  const [messages, changeMessages] = useState([]);
 
-    ]);
+  const [contacts, changeContacts] = useState([
+    {
+      name: 'ChatBot',
+      id: 1,
+    },
+    {
+      name: "Vasiliy",
+      id: 2,
+    },
+    {
+      name: "Alisa",
+      id: 3,
+    },
+    {
+      name: "Siri",
+      id: 4,
+    }
+  ]);
 
-    const [chats, changeChatsList] = useState([
-      {
-        id: 1,
-        contact: "ChatBot"
-      },
-      {
-        id: 2,
-        contact: "Vasiliy"
-      },
-      {
-        id: 3,
-        contact: "Alisa"
-      },
-      {
-        id: 4,
-        contact: "Siri"
-      }
 
-    ]);
+  const addNewContact = (name) => {
+    let nextNumber = 0;
+    if(contacts.length>0){nextNumber = contacts[contacts.length - 1].id+1 } 
+    changeContacts([...contacts,{name:name, id:nextNumber}])
+  }
 
-  const addNewMessage = (mess) => {
+  const addNewMessage = (idContact, mess, answer) => {
     let nextNumber = 0;
     if(messages.length>0){nextNumber = messages[messages.length - 1].id+1 }  
-    changeMessagesList([...messages, {id:nextNumber, author:"Anonim", text: mess}])
+    changeMessages([...messages,{id:nextNumber, contact:idContact, text:mess, answer:answer}]);
   }
 
   useEffect(()=>{
     if(messages.length===0){}
       else{
         if(messages[messages.length - 1].author !== "ChatBot"){
-          const timerId = setTimeout(()=>{changeMessagesList([...messages, {id:messages[messages.length - 1].id+1, author:"ChatBot", text: "Really? Very interesting!"}])}, 2000);
-
+          const timerId = setTimeout(()=>{console.log("Test")}, 2000);
           return () => {clearTimeout(timerId)}
-
         }
       };
-      
-    },[messages])
+  },[messages])
+
+
+
+
  
   return (
-    <div className="App">
-      <Box 
-        sx={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-        }}
-      >
-        <Box
-          sx={{
-          width: '28%',
-          height: '100%',
-          border: '1px solid grey',
-        }}
-        >
-          <Box
-            sx={{
-              width: '100%',
-              height: '5%',
-              border: '1px solid grey',
-              backgroundColor: '#f0f0f0',
-            }}
-          >Contacts</Box>
-          <ChatsList list={chats}/>
-        </Box>
-        <Box
-          sx={{
-            width: '70%',
-            height: '100%',
-          }}
-        >
-          <ChatHeader/>
-          <MessageList list={messages} /> 
-          <SendForm addMessage={addNewMessage}/>
-        </Box>
-      </Box>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path='/allchats' render={(props) => (<Chats {...props} list={contacts} addNewContact={addNewContact}/>)} />
+          <Route exact path="/profile" component={Profile}/>
+          <Route exact path='/register' component={Register}/>
+          <Route exact path='/chat/:id' render={(props) => (<Chat {...props} messages={messages} contacts={contacts} addNewMessage={addNewMessage}/>)} />   
+          <Redirect  to="/" />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

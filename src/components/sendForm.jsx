@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import styles from '../css/sendform.module.css'
 
 export const SendForm = (props) => {
-
   const [newmessage, changeNewMessage] = useState('');
 
   const sendMessage = (event) => {
     event.preventDefault();
-    if(newmessage.length>0){ props.addMessage(newmessage); }
+    if(newmessage.length>0){props.addMessage(props.id, newmessage, false)}
     changeNewMessage('');
     document.getElementById('newmessage').value = '';
   }

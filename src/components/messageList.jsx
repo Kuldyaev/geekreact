@@ -8,7 +8,9 @@ export const MessageList = (props) => {
             <div className={styles.messagesArea}>
                 { props.list.map((message)=>(
                     <Message
-                      author = {message.author}
+                      name={props.name}
+                      answer = {message.answer}
+                      contact = {message.contact}
                       text = {message.text} 
                       key= {message.id} />
                   ))}
