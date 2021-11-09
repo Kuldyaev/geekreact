@@ -1,17 +1,24 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { ChatName } from '../components/chatname';
 import styles from '../css/chats.module.css';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
+import {addNewChat} from '../actions/chats'
 
 export const Chats = (props) => {
+
+  const chats = useSelector((state) => state.chats);
+  const dispatch = useDispatch();
+  const addNewChatToStore = (newcontact) => {dispatch(addNewChat(newcontact))};
+
   const [open, setOpen] = useState(false);
   const [newcontact, changeNewContact] = useState('');
   const handleOpen = () => {setOpen(true)};
   const handleClose = () => {setOpen(false)};
   const createNewContact = () => {
-    if(newcontact.length>0){props.addNewContact(newcontact)}
+    if(newcontact.length>0){addNewChatToStore(newcontact)}
     changeNewContact('');
     document.getElementById('newcontact').value = '';
     handleClose();
@@ -19,6 +26,8 @@ export const Chats = (props) => {
   const handleChange = (event) => {
    changeNewContact(event.target.value);
   }
+
+
 
 
   return <div className = {styles.profilepage}>
@@ -46,7 +55,7 @@ export const Chats = (props) => {
             </Modal>
             <div className = {styles.profileBody}>
               <div className = {styles.chatList}>
-                 { props.list.map((message)=>(
+                 { chats.map((message)=>(
                     <ChatName
                           contact = {message.name}
                           id= {message.id}

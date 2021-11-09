@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
-import styles from '../css/sendform.module.css'
+import { useDispatch } from 'react-redux';
+import {addNewMessage} from '../actions/messages';
+import styles from '../css/sendform.module.css';
 
 export const SendForm = (props) => {
+  const dispatch = useDispatch();
+  const addNewMessageToStore = (newMessage) => {dispatch(addNewMessage(newMessage))};
+
   const [newmessage, changeNewMessage] = useState('');
 
   const sendMessage = (event) => {
     event.preventDefault();
-    if(newmessage.length>0){props.addMessage(props.id, newmessage, false)}
+    let newMessage = {
+      contact: props.id, 
+      text: newmessage, 
+      answer:false
+    };
+    if(newmessage.length>0){addNewMessageToStore(newMessage)}
     changeNewMessage('');
     document.getElementById('newmessage').value = '';
   }

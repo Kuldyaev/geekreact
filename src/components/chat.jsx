@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux'
+
 import styles from '../css/chatheader.module.css'
 import { Link, Redirect } from 'react-router-dom'; 
 import { ChatHeader } from './chatheader'
@@ -8,9 +10,12 @@ import Box from '@material-ui/core/Box';
 
 export const Chat = (props) => {
 
- const infoBase = props.contacts.filter(item => item.id === Number(props.match.params.id));
+ const chats = useSelector((state) => state.chats);
+ const messages = useSelector((state) => state.messages);
+
+ const infoBase = chats.filter(item => item.id === Number(props.match.params.id));
  const info = infoBase[0];
- const chatmessages = props.messages.filter(message => message.contact === Number(props.match.params.id))
+ const chatmessages = messages.filter(message => message.contact === Number(props.match.params.id))
 
   if (infoBase.length<1){
     return <Redirect from='*' to='/shats' />
@@ -31,7 +36,7 @@ export const Chat = (props) => {
               }}
               >
                 <Link to={'/allchats'} className = {styles.contactsLink}>Contacts</Link>
-                <ChatsList list={props.contacts}/>
+                <ChatsList list={chats}/>
               </Box>
               <Box
                 sx={{
