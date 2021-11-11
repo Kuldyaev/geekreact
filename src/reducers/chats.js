@@ -20,7 +20,7 @@ const chats = (state = [
   ], action) => {
   switch (action.type) {
     case ADD_NEW_CHAT:
-      return state.concat([{name: action.payload, id: (state.length>0 ?state[state.length - 1].id+1  :0)}])
+      return state.concat([{name: action.payload.name, id:  action.payload.id}])
     case DELETE_CHAT:
       return state.filter(chat => chat.id !== action.payload)
     default:

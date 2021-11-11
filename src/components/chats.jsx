@@ -6,19 +6,29 @@ import styles from '../css/chats.module.css';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import {addNewChat} from '../actions/chats'
+import { addNewChatInMessages } from '../actions/messages'
+import { getChats } from '../selectors/chats'
 
 export const Chats = (props) => {
 
-  const chats = useSelector((state) => state.chats);
+  const chats = useSelector(getChats);
   const dispatch = useDispatch();
-  const addNewChatToStore = (newcontact) => {dispatch(addNewChat(newcontact))};
+  const addNewChatToStore = (nextChatId, newcontact) => {dispatch(addNewChat(nextChatId, newcontact)); dispatch(addNewChatInMessages(nextChatId))};
+ 
 
   const [open, setOpen] = useState(false);
   const [newcontact, changeNewContact] = useState('');
   const handleOpen = () => {setOpen(true)};
   const handleClose = () => {setOpen(false)};
+
+  console.log(chats);
+   const nextChatId = ( chats.length>0 ?chats[chats.length - 1].id+1  :0)
+
+
   const createNewContact = () => {
-    if(newcontact.length>0){addNewChatToStore(newcontact)}
+    if(newcontact.length>0){
+      addNewChatToStore(nextChatId, newcontact);
+    }
     changeNewContact('');
     document.getElementById('newcontact').value = '';
     handleClose();

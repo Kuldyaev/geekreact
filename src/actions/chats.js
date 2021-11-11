@@ -1,8 +1,8 @@
 import {ADD_NEW_CHAT, DELETE_CHAT} from '../constants'
 
-const addNewChat = (newChat) => ({
+const addNewChat = (id, newChat) => ({
 	type: ADD_NEW_CHAT,
-	payload:  newChat
+	payload:  {id: id, name: newChat}
 })
 
 const deleteChat = (id) => ({

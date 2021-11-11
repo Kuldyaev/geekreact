@@ -5,13 +5,14 @@ import styles from '../css/sendform.module.css';
 
 export const SendForm = (props) => {
   const dispatch = useDispatch();
-  const addNewMessageToStore = (newMessage) => {dispatch(addNewMessage(newMessage))};
+  const addNewMessageToStore = (newMessage) => {dispatch(addNewMessage( props.id, newMessage))};
 
   const [newmessage, changeNewMessage] = useState('');
 
   const sendMessage = (event) => {
     event.preventDefault();
     let newMessage = {
+      id: props.nextId,
       contact: props.id, 
       text: newmessage, 
       answer:false

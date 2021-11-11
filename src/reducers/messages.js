@@ -1,9 +1,11 @@
-import {ADD_NEW_MESSAGE} from '../constants'
+import {ADD_NEW_MESSAGE,  ADD_NEW_CHAT_IN_MESSAGES} from '../constants'
 
-const messages = (state = [], action) => {
+const messages = (state = {1:[], 2:[], 3:[], 4:[]}, action) => {
   switch (action.type) {
-    case ADD_NEW_MESSAGE:
-      return state.concat([{...action.payload, id: (state.length>0 ?state[state.length - 1].id+1  :0)}])
+    case ADD_NEW_MESSAGE: 
+      return  {...state, [action.payload[0]]:[...state[action.payload[0]], action.payload[1]]}
+    case  ADD_NEW_CHAT_IN_MESSAGES: 
+      return  {... state, [action.payload]:[]}       
     default:
       return state
   }
