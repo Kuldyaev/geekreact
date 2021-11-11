@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import styles from '../css/chatlist.module.css'
 import {deleteChat} from '../actions/chats'
+import { deleteChatInMessages } from '../actions/messages'
 
 export const ChatName = (props) => {
 
   const dispatch = useDispatch();
-  const deleteChatInStore = (event) => {dispatch(deleteChat(event.currentTarget.dataset.id))};
+  const deleteChatInStore = (event) => {dispatch(deleteChat(event.currentTarget.dataset.id)); dispatch(deleteChatInMessages(event.currentTarget.dataset.id))};
 
 
   return <div className={styles.chatContact}>

@@ -14,15 +14,11 @@ export const Chats = (props) => {
   const chats = useSelector(getChats);
   const dispatch = useDispatch();
   const addNewChatToStore = (nextChatId, newcontact) => {dispatch(addNewChat(nextChatId, newcontact)); dispatch(addNewChatInMessages(nextChatId))};
- 
-
   const [open, setOpen] = useState(false);
   const [newcontact, changeNewContact] = useState('');
   const handleOpen = () => {setOpen(true)};
   const handleClose = () => {setOpen(false)};
-
-  console.log(chats);
-   const nextChatId = ( chats.length>0 ?chats[chats.length - 1].id+1  :0)
+  const nextChatId = ( chats.length>0 ?chats[chats.length - 1].id+1  :0)
 
 
   const createNewContact = () => {
