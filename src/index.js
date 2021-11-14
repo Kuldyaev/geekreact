@@ -17,8 +17,6 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 let store = createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)));
 const persistor = persistStore(store);
 
-console.log(localStorage.getItem('chatlist'));
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store= {store}>
