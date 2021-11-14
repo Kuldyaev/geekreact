@@ -45,10 +45,16 @@ function App() {
   useEffect(()=>{
     if(messages.length===0){}
       else{
-        if(messages[messages.length - 1].author !== "ChatBot"){
-          const timerId = setTimeout(()=>{console.log("Test")}, 2000);
-          return () => {clearTimeout(timerId)}
-        }
+        const botEchoMessages = messages.filter(message => message.contact === 1);
+        if(botEchoMessages.length===0){}
+          else{ 
+            if(botEchoMessages[botEchoMessages.length - 1].answer === false){
+              let nextNumber = 0;
+              if(messages.length>0){nextNumber = messages[messages.length - 1].id+1 }
+              const timerId = setTimeout(()=>{changeMessages([...messages,{id:nextNumber, contact:1, text:"ChatBot", answer:true}])}, 2000);
+              return () => {clearTimeout(timerId)}
+            }
+          }  
       };
   },[messages])
 
