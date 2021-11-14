@@ -49,3 +49,19 @@
 	align-items: center;
    justify-content: center;
 }
+.deleteBtn{
+	width: 50px;
+	height: 40px;
+	position: relative;
+	background-color: grey;
+	color: silver;
+	display:  none;
+	align-items: center;
+   justify-content: center;
+}
+.contactEdit:hover .contactEditText{
+	display: none;
+}
+.contactEdit:hover .deleteBtn{
+	display: flex;
+}

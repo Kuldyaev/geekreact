@@ -1,2 +1,6 @@
 export const CHECK_ON = 'CHECK_ON'
-export const CHECK_OFF = 'CHECK_OFF'
+export const ADD_NEW_CHAT = 'ADD_NEW_CHAT'
+export const DELETE_CHAT = 'DELETE_CHAT'
+export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
+export const ADD_NEW_CHAT_IN_MESSAGES = 'ADD_NEW_CHAT_IN_MESSAGES'
+export const DELETE_CHAT_IN_MESSAGES = 'DELETE_CHAT_IN_MESSAGES'
