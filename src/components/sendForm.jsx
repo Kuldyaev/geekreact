@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addNewMessageWithThunk } from '../actions/messages';
+import { addNewMessageWithThunk } from '../store/messages/actions';
 import styles from '../css/sendform.module.css';
 
 export const SendForm = (props) => {

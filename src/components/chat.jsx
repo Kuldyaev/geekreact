@@ -6,8 +6,8 @@ import { ChatHeader } from './chatheader'
 import { MessageList } from './messageList'
 import { ChatsList } from './chatsList'
 import { SendForm } from './sendForm'
-import { getChats } from '../selectors/chats'
-import { getMessagesByChatId } from '../selectors/messages'
+import { getChats } from '../store/chats/selectors'
+import { getMessagesByChatId } from '../store/messages/selectors'
 import Box from '@material-ui/core/Box';
 
 export const Chat = (props) => {

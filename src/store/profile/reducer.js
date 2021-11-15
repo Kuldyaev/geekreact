@@ -1,6 +1,6 @@
-import {CHECK_ON} from '../constants'
+import {CHECK_ON} from './constants'
 
-const status = (state = {checkbox: false}, action) => {
+const profile = (state = {checkbox: false}, action) => {
   switch (action.type) {
     case CHECK_ON:
       return {checkbox: !state.checkbox }
@@ -9,4 +9,4 @@ const status = (state = {checkbox: false}, action) => {
   }
 }
 
-export default status
+export default profile

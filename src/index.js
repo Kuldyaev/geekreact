@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import storage from 'redux-persist/lib/storage'; 
-import reducer from './reducers/reducer';
+import reducer from './store/reducers';
 import './index.css';
 import App from './App';
 

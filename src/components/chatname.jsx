@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import styles from '../css/chatlist.module.css'
-import {deleteChat} from '../actions/chats'
-import { deleteChatInMessages } from '../actions/messages'
+import {deleteChat} from '../store/chats//actions'
+import { deleteChatInMessages } from '../store/messages/actions'
 
 export const ChatName = (props) => {
 

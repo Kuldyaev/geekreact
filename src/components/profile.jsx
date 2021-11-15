@@ -2,11 +2,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styles from '../css/profile.module.css'
 import Checkbox from '@material-ui/core/Checkbox';
-import {changeCheckBox} from '../actions/status'
+import {changeCheckBox} from '../store/profile/actions'
 
 export const Profile = (props) => {
 
-  const checkbox = useSelector((state) => state.status);
+  const checkbox = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   const checkCheckBox = () => {dispatch(changeCheckBox)};
