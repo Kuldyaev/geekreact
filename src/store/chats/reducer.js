@@ -1,14 +1,15 @@
 import {ADD_NEW_CHAT, DELETE_CHAT} from './constants'
 
 const chats = (state = [
-    {name: 'ChatBot',  id: 1},
-    {name: "Vasiliy",  id: 2},
-    {name: "Alisa",    id: 3},
-    {name: "Siri",     id: 4}
+    {name: 'ChatBot',  id: 'first', img: 1},
+    {name: "Vasiliy",  id: 'second', img: 2},
+    {name: "Alisa",    id: 'third', img: 3},
+    {name: "Siri",     id: 'fourth', img: 4}
   ], action) => {
   switch (action.type) {
     case ADD_NEW_CHAT:
-      return state.concat([{name: action.payload.name, id:  action.payload.id}])
+      const [id, name] = action.payload;
+      return state.concat([{name: name, id: id, img: 0}])
     case DELETE_CHAT:
       return state.filter(chat => chat.id !== action.payload)
     default:

@@ -5,9 +5,10 @@ import { ChatName } from '../components/chatname';
 import styles from '../css/chats.module.css';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
-import {addNewChat} from '../store/chats/actions'
-import { addNewChatInMessages } from '../store/messages/actions'
-import { getChats } from '../store/chats/selectors'
+import { nanoid } from 'nanoid';
+import {addNewChat} from '../store/chats/actions';
+import { addNewChatInMessages } from '../store/messages/actions';
+import { getChats } from '../store/chats/selectors';
 
 export const Chats = (props) => {
 
@@ -18,10 +19,17 @@ export const Chats = (props) => {
   const [newcontact, changeNewContact] = useState('');
   const handleOpen = () => {setOpen(true)};
   const handleClose = () => {setOpen(false)};
-  const nextChatId = ( chats.length>0 ?chats[chats.length - 1].id+1  :0)
-
 
   const createNewContact = () => {
+    let nextChatId = '';
+    const nextChatIdIsUnique = chats.filter(chat => chat.id === nextChatId);
+    do {
+      nextChatId = nanoid(16);
+    } while (nextChatIdIsUnique.length > 0);
+
+    
+    console.log(nextChatId);
+
     if(newcontact.length>0){
       addNewChatToStore(nextChatId, newcontact);
     }
@@ -29,19 +37,17 @@ export const Chats = (props) => {
     document.getElementById('newcontact').value = '';
     handleClose();
   }
+
   const handleChange = (event) => {
    changeNewContact(event.target.value);
   }
-
-
-
 
   return <div className = {styles.profilepage}>
             <div className = {styles.profileHeader}>
               <Link to={'/'} className = {styles.homepageLink}>&#8592;HomePage</Link>
               <div className = {styles.profileHeaderContent}>
                 <div className = {styles.profileHeaderImg}></div>
-                <div className = {styles.profileHeaderTitle}>CHATS</div>
+                <div className = {styles.profileHeaderTitle}> CHATS</div>
               </div>
               <Button className={styles.profileHeaderRight} onClick={handleOpen}>+</Button>
             </div>
@@ -65,7 +71,8 @@ export const Chats = (props) => {
                     <ChatName
                           contact = {message.name}
                           id= {message.id}
-                          key= {message.id} />
+                          key= {message.id} 
+                          img = {message.img}/>
                   ))}
              </div>
             </div>

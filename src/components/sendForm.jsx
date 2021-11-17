@@ -12,7 +12,6 @@ export const SendForm = (props) => {
   const sendMessage = (event) => {
     event.preventDefault();
     let newMessage = {
-      id: props.nextId,
       contact: props.id, 
       text: newmessage, 
       answer:false
