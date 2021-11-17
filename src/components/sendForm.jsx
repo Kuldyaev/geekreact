@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {addNewMessage} from '../actions/messages';
+import { addNewMessageWithThunk } from '../store/messages/actions';
 import styles from '../css/sendform.module.css';
 
 export const SendForm = (props) => {
   const dispatch = useDispatch();
-  const addNewMessageToStore = (newMessage) => {dispatch(addNewMessage( props.id, newMessage))};
+  const addNewMessageToStore = (newMessage) => {dispatch(addNewMessageWithThunk( props.id, newMessage))};
 
   const [newmessage, changeNewMessage] = useState('');
 

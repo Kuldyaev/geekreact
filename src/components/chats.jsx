@@ -5,9 +5,9 @@ import { ChatName } from '../components/chatname';
 import styles from '../css/chats.module.css';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
-import {addNewChat} from '../actions/chats'
-import { addNewChatInMessages } from '../actions/messages'
-import { getChats } from '../selectors/chats'
+import {addNewChat} from '../store/chats/actions'
+import { addNewChatInMessages } from '../store/messages/actions'
+import { getChats } from '../store/chats/selectors'
 
 export const Chats = (props) => {
 
