@@ -5,7 +5,7 @@ import { Chat } from './components/chat'
 import { Register } from './components/register'
 import { Home } from './components/home'
 import { Profile } from './components/profile'
-import { forAPI } from './components/forAPI'
+import { ForAPI } from './components/forAPI'
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route exact path='/allchats' render={(props) => (<Chats/>)} />
           <Route exact path="/profile" component={Profile}/>
           <Route exact path='/register' component={Register}/>
-          <Route exact path='/testAPI' component={forAPI}/>
+          <Route exact path='/testAPI' component={ForAPI}/>
           <Route exact path='/chat/:id' render={(props) => (<Chat {...props} />)} />   
           <Redirect  to="/" />
         </Switch>
