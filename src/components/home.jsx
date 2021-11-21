@@ -8,6 +8,9 @@ export const Home = (props) => {
                 <div className = {styles.homepageLinkImgProfile}></div>
                 <h3 className = {styles.homepageLinkText}>profile</h3>
               </Link>
+              <Link to={'/testAPI'} className = {styles.homepageLink}>
+                 <h3 className = {styles.homepageLinkText}>test Page for API</h3>
+              </Link>
             </div>
             <div className = {styles.homepageHalf}>
               <Link to={'/allchats'} className = {styles.homepageLink}>

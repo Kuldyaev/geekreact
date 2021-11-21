@@ -16,15 +16,13 @@ export const deleteChatInMessages = (chatId) => ({
 })
 
 export const addNewMessageWithThunk = (chatId, newMessage) =>(dispatch) =>{
-	const nextIdForBot= newMessage.id+1;
 	dispatch(addNewMessage(chatId, newMessage));
-	if (Number(chatId) === 1){
+	if (chatId === 'first'){
 		const botMessage = {
-			id: nextIdForBot,
-			contact: 1, 
+			contact: chatId, 
 			text: "Hello! I'm ChatBot!", 
 			answer: true
 		};
-		dispatch(addNewMessage(1, botMessage));
+		dispatch(addNewMessage(chatId, botMessage));
 	}
 } 

@@ -8,7 +8,8 @@ export const ChatsList = (props) => {
                 <ChatName
                       contact = {message.name}
                       id= {message.id}
-                      key= {message.id} />
+                      key= {message.id} 
+                      img = {message.img}/>
               ))}
          </div>
 }
