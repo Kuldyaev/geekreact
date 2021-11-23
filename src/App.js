@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
 import { Chats } from './components/chats'
@@ -7,13 +9,30 @@ import { Home } from './components/home'
 import { Profile } from './components/profile'
 import { Login } from './components/login'
 import { SingUp } from './components/singup'
-
+import { getIsAuth } from './store/user/selectors'
 import { ForAPI } from './components/forAPI'
 import { PrivateRoute, PublicRoute } from './hoc/specRoutes'
+import reactDom from "react-dom";
+import { auth } from "./firebase/index";
 
-const authed = true;
+
 
 function App() {
+
+  const [authed, setAuthed] = useState(false);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthed(true);
+      } else {
+        setAuthed(false);
+      }
+    })
+  }, []);
+
+  console.log(authed);
+
   return (
     <BrowserRouter>
       <div className="App">

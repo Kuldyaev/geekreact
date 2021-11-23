@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from '../css/home.module.css'
 
-const authed = true;
+const authed = false;
 
 const LogBlock = () => {
   return <div className = {styles.navbar}>
