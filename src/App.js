@@ -13,12 +13,37 @@ import { getIsAuth } from './store/user/selectors'
 import { ForAPI } from './components/forAPI'
 import { PrivateRoute, PublicRoute } from './hoc/specRoutes'
 import { initAuthAction } from './store/user/actions'
+import { chatsRef } from "./firebase";
 
 function App() {
   const authed = useSelector(getIsAuth);
   const dispatch = useDispatch();
 
-  useEffect(() => {dispatch(initAuthAction)});
+  useEffect(() => {
+    dispatch(initAuthAction);
+    let chatsDBlist = [];
+    chatsRef.once('value', (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        chatsDBlist.push(childSnapshot.key);
+     });
+     if(chatsDBlist.length===0){
+      chatsRef.set({
+        first: {name: 'ChatBot',  id: 'first', img: 1}, 
+        second: {name: 'Vasiliy',  id: 'second', img: 2},
+        therd: {name: 'Alisa',    id: 'third', img: 3},
+        forth: {name: 'Siri',     id: 'fourth', img: 4}
+      
+      });
+     }; 
+    });
+    
+    
+   
+
+
+
+    
+  });
 
   return (
     <BrowserRouter>

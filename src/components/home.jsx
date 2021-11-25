@@ -26,13 +26,14 @@ const ProfileLink = () => {
   return <div className = {styles.navbar}>
             <div className = {styles.homepageLinkImgProfile}></div>
             <Link to={'/profile'} className = {styles.homepageLink}>Profile</Link>
-            <button onClick={signOutFunction}>SignOut</button>
+            <div onClick={signOutFunction}>SignOut</div>
           </div> 
 }
 
 export const Home = (props) => {
 
   const authed = useSelector(getIsAuth);
+
 
   return <div className = {styles.homepagebase}>
           {!authed && <LogBlock/> }
@@ -50,5 +51,8 @@ export const Home = (props) => {
               </Link>
             </div>
           </div>
-         </div> 
+          <div>
+            hgfsdjgfkjs
+          </div>
+        </div> 
 }
