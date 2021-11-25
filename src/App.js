@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
 import { Chats } from './components/chats'
@@ -12,26 +12,13 @@ import { SingUp } from './components/singup'
 import { getIsAuth } from './store/user/selectors'
 import { ForAPI } from './components/forAPI'
 import { PrivateRoute, PublicRoute } from './hoc/specRoutes'
-import reactDom from "react-dom";
-import { auth } from "./firebase/index";
-
-
+import { initAuthAction } from './store/user/actions'
 
 function App() {
+  const authed = useSelector(getIsAuth);
+  const dispatch = useDispatch();
 
-  const [authed, setAuthed] = useState(false);
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthed(true);
-      } else {
-        setAuthed(false);
-      }
-    })
-  }, []);
-
-  console.log(authed);
+  useEffect(() => {dispatch(initAuthAction)});
 
   return (
     <BrowserRouter>

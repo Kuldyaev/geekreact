@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
-import styles from '../css/home.module.css'
-
-const authed = false;
+import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { getIsAuth } from "../store/user/selectors";
+import { auth } from "../firebase/index";
+import styles from '../css/home.module.css';
 
 const LogBlock = () => {
   return <div className = {styles.navbar}>
@@ -11,13 +12,27 @@ const LogBlock = () => {
 }
 
 const ProfileLink = () => {
+
+  const signOutFunction = async (e) => {
+    e.preventDefault();
+    try {
+      await auth.signOut()
+     } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
   return <div className = {styles.navbar}>
             <div className = {styles.homepageLinkImgProfile}></div>
             <Link to={'/profile'} className = {styles.homepageLink}>Profile</Link>
+            <button onClick={signOutFunction}>SignOut</button>
           </div> 
 }
 
 export const Home = (props) => {
+
+  const authed = useSelector(getIsAuth);
 
   return <div className = {styles.homepagebase}>
           {!authed && <LogBlock/> }

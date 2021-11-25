@@ -11,13 +11,8 @@ export const ForAPI = (props) => {
 
   const dispatch = useDispatch();
 
-  const GetPic = () => {
-    dispatch(getBooksWithThunk);
-  }
-
-  useEffect(() => {
-    GetPic();
-  }, [])
+  const GetPic = () => {dispatch(getBooksWithThunk)}
+  useEffect(() => {GetPic()})
 
   const isError = useSelector(getError)
   const isLoading = useSelector(getLoading)
