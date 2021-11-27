@@ -36,13 +36,7 @@ function App() {
       });
      }; 
     });
-    
-    
-   
-
-
-
-    
+  
   });
 
   return (
@@ -64,13 +58,9 @@ function App() {
             <SingUp/>
           </PublicRoute>
 
-
-          <PrivateRoute authenticated={authed} exact path="//chat/:id">
-            <Chats/>
-          </PrivateRoute>
-
+          <Route exact path='/chat/:id' render={(props) => (<Chat {...props} />)} /> 
           <Route exact path='/register' component={Register}/>
-          <Route exact path='/chat/:id' render={(props) => (<Chat {...props} />)} />   
+ 
           <Redirect  to="/" />
         </Switch>
       </div>

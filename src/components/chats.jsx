@@ -20,7 +20,7 @@ export const Chats = (props) => {
 
   const chats = useSelector(getChats);
   const dispatch = useDispatch();
-  const addNewChatToStore = (nextChatId, newcontact) => {dispatch(addNewChat(nextChatId, newcontact)); dispatch(addNewChatInMessages(nextChatId))};
+  //const addNewChatToStore = (nextChatId, newcontact) => {dispatch(addNewChat(nextChatId, newcontact)); dispatch(addNewChatInMessages(nextChatId))};
   const [open, setOpen] = useState(false);
   const [newcontact, changeNewContact] = useState('');
   const handleOpen = () => {setOpen(true)};
@@ -34,7 +34,6 @@ export const Chats = (props) => {
     } while (nextChatIdIsUnique.length > 0);
 
     if(newcontact.length>0){
-      //addNewChatToStore(nextChatId, newcontact);
       chatsRef.child(nextChatId).set({name: newcontact,  id: nextChatId, img: 0})
     }
     changeNewContact('');

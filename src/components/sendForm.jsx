@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewMessageWithThunk } from '../store/messages/actions';
 import styles from '../css/sendform.module.css';
+import { messagesRef } from "../firebase";
+import { nanoid } from 'nanoid';
 
 export const SendForm = (props) => {
   const dispatch = useDispatch();
@@ -16,7 +18,9 @@ export const SendForm = (props) => {
       text: newmessage, 
       answer:false
     };
-    if(newmessage.length>0){addNewMessageToStore(newMessage)}
+    if(newmessage.length>0){
+      messagesRef.child(props.id).child(nanoid()).set(newMessage)
+    }
     changeNewMessage('');
     document.getElementById('newmessage').value = '';
   }
