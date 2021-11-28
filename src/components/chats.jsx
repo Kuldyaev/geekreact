@@ -6,8 +6,7 @@ import styles from '../css/chats.module.css';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import { nanoid } from 'nanoid';
-import {addNewChat, initChatsTracking} from '../store/chats/actions';
-import { addNewChatInMessages } from '../store/messages/actions';
+import { initChatsTracking} from '../store/chats/actions';
 import { getChats } from '../store/chats/selectors';
 import { chatsRef } from "../firebase";
 
@@ -20,7 +19,6 @@ export const Chats = (props) => {
 
   const chats = useSelector(getChats);
   const dispatch = useDispatch();
-  //const addNewChatToStore = (nextChatId, newcontact) => {dispatch(addNewChat(nextChatId, newcontact)); dispatch(addNewChatInMessages(nextChatId))};
   const [open, setOpen] = useState(false);
   const [newcontact, changeNewContact] = useState('');
   const handleOpen = () => {setOpen(true)};

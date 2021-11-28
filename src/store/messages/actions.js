@@ -30,6 +30,7 @@ export const addNewMessageWithThunk = (chatId, newMessage) =>(dispatch) =>{
 
 const getPayloadFromSnapshot = (snapshot) => {
 	let newMessage = {};
+	newMessage['key']=snapshot.key;
   	snapshot.forEach((chat) => {
 		newMessage[chat.key] = chat.val();
 		});
@@ -39,13 +40,11 @@ const getPayloadFromSnapshot = (snapshot) => {
 export const initMessagesTracking = (chatId) => (dispatch) => {
 	messagesRef.child(chatId).on("child_changed", (snapshot) => {
 	  const payload = getPayloadFromSnapshot(snapshot);
-	  console.log(payload);
 	  dispatch(addNewMessage(chatId, payload));
 	});
   
 	messagesRef.child(chatId).on("child_added", (snapshot) => {
 	  const payload = getPayloadFromSnapshot(snapshot);
-	  console.log(payload);
 	  dispatch(addNewMessage(chatId, payload));
 	});
   };

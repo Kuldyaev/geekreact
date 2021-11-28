@@ -12,12 +12,11 @@ export const ForAPI = (props) => {
   const dispatch = useDispatch();
 
   const GetPic = () => {dispatch(getBooksWithThunk)}
-  useEffect(() => {GetPic()})
+  useEffect(() => { GetPic()}, []);
 
   const isError = useSelector(getError)
   const isLoading = useSelector(getLoading)
   const pic = useSelector(getPics);
-  console.log(pic.image);
 
   return <div>
       <div className = {styles.top}>
