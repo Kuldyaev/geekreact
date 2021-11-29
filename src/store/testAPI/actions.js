@@ -27,8 +27,6 @@ export const setLoading = (status) => ({
   
     try {
       const response = await fetch(BOOKS_API);
-      console.log(response);
-
       if (!response.ok) {
         throw new Error('any error')
       }

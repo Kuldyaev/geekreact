@@ -1,4 +1,5 @@
 import {ADD_NEW_MESSAGE, ADD_NEW_CHAT_IN_MESSAGES, DELETE_CHAT_IN_MESSAGES} from './constants'
+import { messagesRef } from "../../firebase";
 
 export const addNewMessage = (chatId, newMessage) => ({
 	type: ADD_NEW_MESSAGE,
@@ -26,3 +27,29 @@ export const addNewMessageWithThunk = (chatId, newMessage) =>(dispatch) =>{
 		dispatch(addNewMessage(chatId, botMessage));
 	}
 } 
+
+const getPayloadFromSnapshot = (snapshot) => {
+	let newMessage = {};
+	newMessage['key']=snapshot.key;
+  	snapshot.forEach((chat) => {
+		newMessage[chat.key] = chat.val();
+		});
+  	return  newMessage
+};
+
+export const initMessagesTracking = (chatId) => (dispatch) => {
+	messagesRef.child(chatId).on("child_changed", (snapshot) => {
+	  const payload = getPayloadFromSnapshot(snapshot);
+	  dispatch(addNewMessage(chatId, payload));
+	});
+  
+	messagesRef.child(chatId).on("child_added", (snapshot) => {
+	  const payload = getPayloadFromSnapshot(snapshot);
+	  dispatch(addNewMessage(chatId, payload));
+	});
+  };
+
+  export const deleteChatWithFirebaseFromMessages = (id) =>(dispatch) => {
+	messagesRef.child(id).remove()
+		.then(dispatch(deleteChatInMessages(id)));
+}

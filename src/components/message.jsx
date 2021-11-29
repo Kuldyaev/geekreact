@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../css/message.module.css'
 
 export const Message = (props) => {
+  console.log(props);
   if(props.answer===true){
     return <div className={styles.messagePlaceRight}>
           <div className = {styles.messageBody}>

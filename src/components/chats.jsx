@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { ChatName } from '../components/chatname';
@@ -6,15 +6,19 @@ import styles from '../css/chats.module.css';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import { nanoid } from 'nanoid';
-import {addNewChat} from '../store/chats/actions';
-import { addNewChatInMessages } from '../store/messages/actions';
+import { initChatsTracking} from '../store/chats/actions';
 import { getChats } from '../store/chats/selectors';
+import { chatsRef } from "../firebase";
+
 
 export const Chats = (props) => {
 
+
+  useEffect(() => {dispatch(initChatsTracking())},[]);
+
+
   const chats = useSelector(getChats);
   const dispatch = useDispatch();
-  const addNewChatToStore = (nextChatId, newcontact) => {dispatch(addNewChat(nextChatId, newcontact)); dispatch(addNewChatInMessages(nextChatId))};
   const [open, setOpen] = useState(false);
   const [newcontact, changeNewContact] = useState('');
   const handleOpen = () => {setOpen(true)};
@@ -22,16 +26,13 @@ export const Chats = (props) => {
 
   const createNewContact = () => {
     let nextChatId = '';
-    const nextChatIdIsUnique = chats.filter(chat => chat.id === nextChatId);
+    const nextChatIdIsUnique = Object.keys(chats).filter(chat => chat.id === nextChatId);
     do {
       nextChatId = nanoid(16);
     } while (nextChatIdIsUnique.length > 0);
 
-    
-    console.log(nextChatId);
-
     if(newcontact.length>0){
-      addNewChatToStore(nextChatId, newcontact);
+      chatsRef.child(nextChatId).set({name: newcontact,  id: nextChatId, img: 0})
     }
     changeNewContact('');
     document.getElementById('newcontact').value = '';
@@ -67,12 +68,12 @@ export const Chats = (props) => {
             </Modal>
             <div className = {styles.profileBody}>
               <div className = {styles.chatList}>
-                 { chats.map((message)=>(
+                 { Object.entries(chats).map(([key, chat])=>(
                     <ChatName
-                          contact = {message.name}
-                          id= {message.id}
-                          key= {message.id} 
-                          img = {message.img}/>
+                          contact = {chat.name}
+                          id= {chat.id}
+                          key= {key} 
+                          img = {chat.img}/>
                   ))}
              </div>
             </div>

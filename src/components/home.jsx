@@ -1,13 +1,45 @@
-import { Link } from 'react-router-dom'
-import styles from '../css/home.module.css'
+import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { getIsAuth } from "../store/user/selectors";
+import { auth } from "../firebase/index";
+import styles from '../css/home.module.css';
+
+const LogBlock = () => {
+  return <div className = {styles.navbar}>
+            <Link to={'/signup'} className = {styles.homepageLink}>SignUp</Link>
+            <Link to={'/login'} className = {styles.homepageLink}>LogIn</Link>
+          </div>
+}
+
+const ProfileLink = () => {
+
+  const signOutFunction = async (e) => {
+    e.preventDefault();
+    try {
+      await auth.signOut()
+     } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
+  return <div className = {styles.navbar}>
+            <div className = {styles.homepageLinkImgProfile}></div>
+            <Link to={'/profile'} className = {styles.homepageLink}>Profile</Link>
+            <div onClick={signOutFunction}>SignOut</div>
+          </div> 
+}
 
 export const Home = (props) => {
-  return <div className = {styles.homepage}>
+
+  const authed = useSelector(getIsAuth);
+
+
+  return <div className = {styles.homepagebase}>
+          {!authed && <LogBlock/> }
+          { authed && <ProfileLink/> }
+          <div className = {styles.homepage}>
             <div className = {styles.homepageHalf}>
-              <Link to={'/profile'} className = {styles.homepageLink}>
-                <div className = {styles.homepageLinkImgProfile}></div>
-                <h3 className = {styles.homepageLinkText}>profile</h3>
-              </Link>
               <Link to={'/testAPI'} className = {styles.homepageLink}>
                  <h3 className = {styles.homepageLinkText}>test Page for API</h3>
               </Link>
@@ -19,4 +51,8 @@ export const Home = (props) => {
               </Link>
             </div>
           </div>
+          <div>
+            hgfsdjgfkjs
+          </div>
+        </div> 
 }
