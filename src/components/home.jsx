@@ -51,8 +51,5 @@ export const Home = (props) => {
               </Link>
             </div>
           </div>
-          <div>
-            hgfsdjgfkjs
-          </div>
         </div> 
 }
