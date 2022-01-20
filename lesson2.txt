@@ -91,7 +91,7 @@ viacheslav@viacheslav-TOSHIBA-NB205:~$
 
 
 
-
+********Запуск SSH-сервера на машине в роли сервера ***************************
 
 
 viacheslav@viacheslav-TOSHIBA-NB205:~$ sudo systemctl start ssh
