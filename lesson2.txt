@@ -1,35 +1,8 @@
-﻿viacheslav@viacheslav-TOSHIBA-NB205:~$ ls
-Desktop    Downloads         Music     Public     Videos
-Documents  examples.desktop  Pictures  Templates
-viacheslav@viacheslav-TOSHIBA-NB205:~$ cd Documents
-viacheslav@viacheslav-TOSHIBA-NB205:~/Documents$ ls
-list.txt
-viacheslav@viacheslav-TOSHIBA-NB205:~/Documents$ nano list.txt
-viacheslav@viacheslav-TOSHIBA-NB205:~/Documents$ cd ~
-viacheslav@viacheslav-TOSHIBA-NB205:~$ clear
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 viacheslav@viacheslav-TOSHIBA-NB205:~$ mkdir students mentors
 viacheslav@viacheslav-TOSHIBA-NB205:~$ ls
 Desktop    Downloads         mentors  Pictures  students   Videos
 Documents  examples.desktop  Music    Public    Templates
 viacheslav@viacheslav-TOSHIBA-NB205:~$ cd students
-viacheslav@viacheslav-TOSHIBA-NB205:~/students$ echo students_list.txt
-students_list.txt
-viacheslav@viacheslav-TOSHIBA-NB205:~/students$ ls
 viacheslav@viacheslav-TOSHIBA-NB205:~/students$ touch students_list.txt
 viacheslav@viacheslav-TOSHIBA-NB205:~/students$ ls
 students_list.txt
@@ -38,16 +11,11 @@ viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ touch mentors_list.txt
 viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ ls
 mentors_list.txt
 viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ nano mentors_list.txt
-viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ nano mentors_list.txt
 viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ nano ../students/students_list.txt
 viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ ls
 mentors_list.txt
 viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ mv mentors_list.txt ../students
 viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ ls
-viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ tree
-.
-
-0 directories, 0 files
 viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ cd ..
 viacheslav@viacheslav-TOSHIBA-NB205:~$ tree
 .
