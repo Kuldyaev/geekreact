@@ -122,3 +122,22 @@ lines 1-12/12 (END)...skipping...
 янв 20 11:51:30 viacheslav-TOSHIBA-NB205 sshd[3577]: Server listening on :: port
 янв 20 11:51:30 viacheslav-TOSHIBA-NB205 systemd[1]: Started OpenBSD Secure Shel
 ~
+
+
+*************Подключение SSH-клиента  *************************************
+
+C:\Users\Viacheslav>ssh viacheslav@192.168.0.90
+viacheslav@192.168.0.90's password:
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-166-generic i686)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+Last login: Thu Jan 20 11:57:16 2022 from 192.168.0.48
+viacheslav@viacheslav-TOSHIBA-NB205:~$
