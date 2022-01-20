@@ -1,0 +1,121 @@
+﻿viacheslav@viacheslav-TOSHIBA-NB205:~$ ls
+Desktop    Downloads         Music     Public     Videos
+Documents  examples.desktop  Pictures  Templates
+viacheslav@viacheslav-TOSHIBA-NB205:~$ cd Documents
+viacheslav@viacheslav-TOSHIBA-NB205:~/Documents$ ls
+list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/Documents$ nano list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/Documents$ cd ~
+viacheslav@viacheslav-TOSHIBA-NB205:~$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+viacheslav@viacheslav-TOSHIBA-NB205:~$ mkdir students mentors
+viacheslav@viacheslav-TOSHIBA-NB205:~$ ls
+Desktop    Downloads         mentors  Pictures  students   Videos
+Documents  examples.desktop  Music    Public    Templates
+viacheslav@viacheslav-TOSHIBA-NB205:~$ cd students
+viacheslav@viacheslav-TOSHIBA-NB205:~/students$ echo students_list.txt
+students_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/students$ ls
+viacheslav@viacheslav-TOSHIBA-NB205:~/students$ touch students_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/students$ ls
+students_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/students$ cd ../mentors
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ touch mentors_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ ls
+mentors_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ nano mentors_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ nano mentors_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ nano ../students/students_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ ls
+mentors_list.txt
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ mv mentors_list.txt ../students
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ ls
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ tree
+.
+
+0 directories, 0 files
+viacheslav@viacheslav-TOSHIBA-NB205:~/mentors$ cd ..
+viacheslav@viacheslav-TOSHIBA-NB205:~$ tree
+.
+├── Desktop
+├── Documents
+│   └── list.txt
+├── Downloads
+├── examples.desktop
+├── mentors
+├── Music
+├── Pictures
+├── Public
+├── students
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Templates
+└── Videos
+
+10 directories, 4 files
+viacheslav@viacheslav-TOSHIBA-NB205:~$ rm mentors -r
+viacheslav@viacheslav-TOSHIBA-NB205:~$ tree
+.
+├── Desktop
+├── Documents
+│   └── list.txt
+├── Downloads
+├── examples.desktop
+├── Music
+├── Pictures
+├── Public
+├── students
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Templates
+└── Videos
+
+9 directories, 4 files
+viacheslav@viacheslav-TOSHIBA-NB205:~$ mv students students_and_mentors
+viacheslav@viacheslav-TOSHIBA-NB205:~$ tree
+.
+├── Desktop
+├── Documents
+│   └── list.txt
+├── Downloads
+├── examples.desktop
+├── Music
+├── Pictures
+├── Public
+├── students_and_mentors
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Templates
+└── Videos
+
+9 directories, 4 files
+viacheslav@viacheslav-TOSHIBA-NB205:~$ rm students_and_mentors -r
+viacheslav@viacheslav-TOSHIBA-NB205:~$ tree
+.
+├── Desktop
+├── Documents
+│   └── list.txt
+├── Downloads
+├── examples.desktop
+├── Music
+├── Pictures
+├── Public
+├── Templates
+└── Videos
+
+8 directories, 2 files
+viacheslav@viacheslav-TOSHIBA-NB205:~$ 
