@@ -87,3 +87,38 @@ viacheslav@viacheslav-TOSHIBA-NB205:~$ tree
 
 8 directories, 2 files
 viacheslav@viacheslav-TOSHIBA-NB205:~$ 
+
+
+
+
+
+
+
+viacheslav@viacheslav-TOSHIBA-NB205:~$ sudo systemctl start ssh
+viacheslav@viacheslav-TOSHIBA-NB205:~$ sudo systemctl status ssh
+● ssh.service - OpenBSD Secure Shell server
+   Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enab
+   Active: active (running) since Thu 2022-01-20 11:51:30 MSK; 2min 42s ago
+ Main PID: 3577 (sshd)
+    Tasks: 1 (limit: 4711)
+   CGroup: /system.slice/ssh.service
+           └─3577 /usr/sbin/sshd -D
+
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 systemd[1]: Starting OpenBSD Secure She
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 sshd[3577]: Server listening on 0.0.0.0
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 sshd[3577]: Server listening on :: port
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 systemd[1]: Started OpenBSD Secure Shel
+lines 1-12/12 (END)...skipping...
+● ssh.service - OpenBSD Secure Shell server
+   Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enab
+   Active: active (running) since Thu 2022-01-20 11:51:30 MSK; 2min 42s ago
+ Main PID: 3577 (sshd)
+    Tasks: 1 (limit: 4711)
+   CGroup: /system.slice/ssh.service
+           └─3577 /usr/sbin/sshd -D
+
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 systemd[1]: Starting OpenBSD Secure She
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 sshd[3577]: Server listening on 0.0.0.0
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 sshd[3577]: Server listening on :: port
+янв 20 11:51:30 viacheslav-TOSHIBA-NB205 systemd[1]: Started OpenBSD Secure Shel
+~
